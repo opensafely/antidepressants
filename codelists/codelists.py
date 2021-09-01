@@ -16,15 +16,15 @@ from cohortextractor import (codelist, codelist_from_csv, combine_codelists)
 # --CODELISTS--
 
 # Antidepressants - All
-antidepressantsall_codes = codelist_from_csv(
-  "codelists/user-nish0119-antidepressant-drugs-all-bnf-chapter-4-section-3.csv",
-  system = "snomed",
-  column = "dmd_id",
-)
-
-# Antidepressants - SSRI
 #antidepressantsall_codes = codelist_from_csv(
-#  "codelists/opensafely-selective-serotonin-reuptake-inhibitors-564e95c3-dmd.csv",
+#  "codelists/user-nish0119-antidepressant-drugs-all-bnf-chapter-4-section-3.csv",
 #  system = "snomed",
 #  column = "dmd_id",
 #)
+
+# Antidepressants - SSRI
+antidepressantsall_codes = codelist_from_csv(
+  "codelists/opensafely-selective-serotonin-reuptake-inhibitors-564e95c3-dmd.csv",
+  system = "snomed",
+  column = "dmd_id",
+)
