@@ -24,7 +24,7 @@ from codelists import *
 # Defines the study population of interest and variables to extract
 
     # --DEFINES DATA BEHAVIOUR--
-    study = StudyDefinition(
+study = StudyDefinition(
     default_expectations={
         "date": {"earliest": "2000-01-01", "latest": "today"},
         "rate": "uniform",
@@ -78,8 +78,4 @@ from codelists import *
             returning = "binary_flag"
 
    ),
-
-
-
-
 )

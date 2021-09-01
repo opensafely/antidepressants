@@ -17,7 +17,7 @@ from cohortextractor import (codelist, codelist_from_csv, combine_codelists)
 
 # Antidepressants - All
 antidepressantsall_codes = codelist_from_csv(
-  "codelists/nish0119-antidepressant-drugs-all-bnf-chapter-4-section-3-5b0a287e-dmd.csv",
+  "codelists/user-nish0119-antidepressant-drugs-all-bnf-chapter-4-section-3.csv",
   system = "snomed",
   column = "dmd_id",
 )
