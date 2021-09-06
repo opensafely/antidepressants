@@ -62,7 +62,7 @@ study = StudyDefinition(
 
     ADprecovid = patients.with_these_medications(
             antidepressantsall_codes,
-            between ["2019-03-01", "2020-03-22"],
+            between = ["2019-03-01", "2020-03-22"],
             return_last_date_in_period=TRUE, # to obtain latest date on AD preCOVID
             return_expectations={"earliest": "2019-03-01", "latest": "2020-03-22"},
             returning = "binary_flag"
@@ -71,7 +71,7 @@ study = StudyDefinition(
 
     ADpostcovid = patients.with_these_medications(
             antidepressantsall_codes,
-            between ["2020-03-23", "2021-03-31"],
+            between = ["2020-03-23", "2021-03-31"],
             return_last_date_in_period=TRUE, # to obtain latest date on AD preCOVID
             return_expectations={"earliest": "2020-03-23", "latest": "2021-03-31"},
             returning = "binary_flag"
