@@ -1,10 +1,10 @@
 {
   "files": {
-    "opensafely-selective-serotonin-reuptake-inhibitors-dmd-6a572e55.csv": {
-      "id": "opensafely/selective-serotonin-reuptake-inhibitors-dmd/6a572e55/",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/selective-serotonin-reuptake-inhibitors-dmd/6a572e55//",
-      "downloaded_at": "2021-09-06 12:43:32.603555Z",
-      "sha": "85e3b0949455aa282fd26b09d523905127160789"
+    "user-nish0119-antidepressant-drugs-all-bnf-chapter-4-section-3.csv": {
+      "id": "user/nish0119/antidepressant-drugs-all-bnf-chapter-4-section-3/5b0a287e",
+      "url": "https://codelists.opensafely.org/codelist/user/nish0119/antidepressant-drugs-all-bnf-chapter-4-section-3/5b0a287e/",
+      "downloaded_at": "2021-09-06 13:56:16.150431Z",
+      "sha": "1794501d84d9fa3f84617bf6e9322635489d227c"
     }
   }
 }
