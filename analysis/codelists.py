@@ -24,7 +24,7 @@ from cohortextractor import (codelist, codelist_from_csv, combine_codelists)
 
 # Antidepressants - SSRI
 antidepressantsall_codes = codelist_from_csv(
-  "codelists/opensafely/selective-serotonin-reuptake-inhibitors-dmd.csv",
+  "codelists/opensafely-selective-serotonin-reuptake-inhibitors-dmd.csv",
   system = "snomed",
   column = "dmd_id",
 )
