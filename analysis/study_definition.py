@@ -74,5 +74,12 @@ study = StudyDefinition(
         return_last_date_in_period = True, # to obtain latest date on AD preCOVID
         returning = "binary_flag"
 
-   #),
+    ),
+
+    ethnicity_by_16_grouping=patients.with_ethnicity_from_sus(
+        returning="group_16",
+        use_most_frequent_code = True,
+    ),
+
+
 )
