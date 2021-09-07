@@ -76,9 +76,19 @@ study = StudyDefinition(
 
     ),
 
-    ethnicity_by_16_grouping=patients.with_ethnicity_from_sus(
-        returning="group_16",
-        use_most_frequent_code = True,
+    # ethnicity_by_16_grouping = patients.with_ethnicity_from_sus(
+    #    returning = "group_16",
+    #    use_most_frequent_code = True,
+    #),
+
+    imd=patients.address_as_of(
+        "2020-02-29",
+        returning = "index_of_multiple_deprivation",
+        round_to_nearest = 100,
+        return_expectations = {
+            "rate": "universal",
+            "category": {"ratios": {"100": 0.1, "200": 0.2, "300": 0.7}},
+    },
     ),
 
 
