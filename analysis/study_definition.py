@@ -25,7 +25,7 @@ from codelists import *
 
     # --DEFINES DATA BEHAVIOUR--
 study = StudyDefinition(
-    default_expectations={
+    default_expectations = {
         "date": {"earliest": "2000-01-01", "latest": "today"},
         "rate": "uniform",
         "incidence": 0.5,
@@ -39,7 +39,7 @@ study = StudyDefinition(
     # --DEFINES STUDY VARIABLES--
     ageprecovid = patients.age_as_of(
         "2020-03-01",
-        return_expectations={
+        return_expectations = {
             "rate": "universal",
             "int": {"distribution":"population_ages"},
         }
@@ -47,7 +47,7 @@ study = StudyDefinition(
 
     agepostcovid = patients.age_as_of(
         "2021-03-01",
-        return_expectations={
+        return_expectations = {
             "rate": "universal",
             "int": {"distribution":"population_ages"},
         }
@@ -60,20 +60,18 @@ study = StudyDefinition(
         }
     ),
 
-    ADprecovid=patients.with_these_medications(
+    ADprecovid = patients.with_these_medications(
         antidepressantsall_codes,
-        between ["2019-03-01", "2020-03-22"],
-        return_last_date_in_period=TRUE,  # to obtain latest date on AD preCOVID
-        return_expectations={"earliest": "2019-03-01", "latest": "2020-03-22"},
-        returning="binary_flag"
+        between = ["2019-03-01", "2020-03-22"],
+        return_last_date_in_period = True,  # to obtain latest date on AD preCOVID
+        returning = "binary_flag"
             
     ),
 
    # ADpostcovid = patients.with_these_medications(
     #        antidepressantsall_codes,
-     #       between ["2020-03-23", "2021-03-31"],
+     #       between = ["2020-03-23", "2021-03-31"],
       #      return_last_date_in_period=TRUE, # to obtain latest date on AD preCOVID
-       #     return_expectations={"earliest": "2020-03-23", "latest": "2021-03-31"},
         #    returning = "binary_flag"
 
    #),
