@@ -1,3 +1,10 @@
 {
-  "files": {}
+  "files": {
+    "opensafely-selective-serotonin-reuptake-inhibitors-dmd.csv": {
+      "id": "opensafely/selective-serotonin-reuptake-inhibitors-dmd/6a572e55",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/selective-serotonin-reuptake-inhibitors-dmd/6a572e55/",
+      "downloaded_at": "2021-09-07 10:54:48.474570Z",
+      "sha": "85e3b0949455aa282fd26b09d523905127160789"
+    }
+  }
 }
