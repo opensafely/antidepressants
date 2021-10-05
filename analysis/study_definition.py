@@ -76,6 +76,18 @@ study = StudyDefinition(
 
     ),
 
+     # ETHNICITY IN 6 CATEGORIES
+    ethnicity=patients.with_these_clinical_events(
+        ethnicity_codes,
+        returning="category",
+        find_last_match_in_period=True,
+        include_date_of_match=True,
+        return_expectations={
+            "category": {"ratios": {"1": 0.2, "2":0.2, "3":0.2, "4":0.2, "5": 0.2}},
+            "incidence": 0.75,
+        },
+    ),
+
     # ethnicity_by_16_grouping = patients.with_ethnicity_from_sus(
     #    returning = "group_16",
     #    use_most_frequent_code = True,
