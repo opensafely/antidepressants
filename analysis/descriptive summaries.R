@@ -6,14 +6,17 @@
 
 ######################################
 
-#Only need to run this code if packages not already installed
-install.packages("dplyr") #useful for manipulating data, makes code easier to write
-install.packages("reshape")
-install.packages("varhandle") # converting factors to numeric variables?
-install.packages("tidyverse")
-
-#Need to run this each time to bring in R packages
+# Need to run this each time to bring in R packages
 library(dplyr)
 library(reshape)
 library(varhandle)
 library(tidyverse)
+
+# Create output directory
+dir.create(here::here("output", "tables"), showWarnings = FALSE, recursive=TRUE)
+
+# Read in input data
+addata <- read.csv ("input.csv")
+
+
+
