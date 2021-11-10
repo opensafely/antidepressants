@@ -40,11 +40,11 @@ addataethimd <- addata %>%
         addataethimd$ethnicity[addataethimd$ethnicity=="4"]<-"Black or Black British" %>%
         addataethimd$ethnicity[addataethimd$ethnicity=="5"]<-"Other ethnic groups" %>%
         
-        addataethimd$imd[addataethimd$imd=="1"]<-"1 most deprived" %>%
+#        addataethimd$imd[addataethimd$imd=="1"]<-"1 most deprived" %>%
 #        addataethimd$imd[addataethimd$imd=="2"]<-"2" %>%
 #        addataethimd$imd[addataethimd$imd=="3"]<-"3" %>%
 #        addataethimd$imd[addataethimd$imd=="4"]<-"4" %>%
-        addataethimd$imd[addataethimd$imd=="5"]<-"5 least deprived"
+#        addataethimd$imd[addataethimd$imd=="5"]<-"5 least deprived"
  
 
 # Looking at the new distinct values of ethnicity upon reshaping
