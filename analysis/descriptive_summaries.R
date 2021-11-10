@@ -128,7 +128,7 @@ ggplot(addataprecovidsummaryeth, aes(x=ethnicity, y=precovpatnum)) +
         labs(y="Patient numbers", x = "Ethnicity") +
 #       scale_fill_brewer(palette = "Pastel1")
 
-write.csv (addataprecovidsummaryeth,file=here::here("output","tables","tables.csv"))
+write.csv (addatatoplot,file=here::here("output","tables","tables.csv"))
         
 
 
