@@ -18,6 +18,8 @@ addata<- read.csv (here::here ("output/data", "input.csv"))
 
 #---------------------------------------------------------------------------------------------
 
+#---------------------------------------------------------------------------------------------
+
 ## Exploring data
 
 # Looking at variables
@@ -32,19 +34,21 @@ unique(addata$imd)
 
 #---------------------------------------------------------------------------------------------
 
+class(addataethimd$ethnicity)
+
 # Reshaping data so IMD and ethnicity are renamed as categories than numbers
-addataethimd <- addata %>%
-        addataethimd$ethnicity[addataethimd$ethnicity=="1"]<-"White" %>%
-        addataethimd$ethnicity[addataethimd$ethnicity=="2"]<-"Mixed" %>%
-        addataethimd$ethnicity[addataethimd$ethnicity=="3"]<-"Asian or Asian British" %>%
-        addataethimd$ethnicity[addataethimd$ethnicity=="4"]<-"Black or Black British" %>%
-        addataethimd$ethnicity[addataethimd$ethnicity=="5"]<-"Other ethnic groups" %>%
-        
-#        addataethimd$imd[addataethimd$imd=="1"]<-"1 most deprived" %>%
-#        addataethimd$imd[addataethimd$imd=="2"]<-"2" %>%
-#        addataethimd$imd[addataethimd$imd=="3"]<-"3" %>%
-#        addataethimd$imd[addataethimd$imd=="4"]<-"4" %>%
-#        addataethimd$imd[addataethimd$imd=="5"]<-"5 least deprived"
+addataethimd <- addata
+        addataethimd$ethnicity[addataethimd$ethnicity=="1"]<-"White"
+        addataethimd$ethnicity[addataethimd$ethnicity=="2"]<-"Mixed"
+        addataethimd$ethnicity[addataethimd$ethnicity=="3"]<-"Asian or Asian British"
+        addataethimd$ethnicity[addataethimd$ethnicity=="4"]<-"Black or Black British"
+        addataethimd$ethnicity[addataethimd$ethnicity=="5"]<-"Other ethnic groups"
+        addataethimd$imd[addataethimd$imd=="0"]<-"NA"
+        addataethimd$imd[addataethimd$imd=="1"]<-"1 most deprived"
+        addataethimd$imd[addataethimd$imd=="2"]<-"2"
+        addataethimd$imd[addataethimd$imd=="3"]<-"3"
+        addataethimd$imd[addataethimd$imd=="4"]<-"4"
+        addataethimd$imd[addataethimd$imd=="5"]<-"5 least deprived"
  
 
 # Looking at the new distinct values of ethnicity upon reshaping
@@ -53,11 +57,11 @@ unique(addataethimd$ethnicity)
 
 # Filter on patients on antidepressants data pre COVID
 addataethimdprecov <- addataethimd %>%
-        filter(ADprecovid == 1)
+        filter(ADprecovid == "1")
 
 # Filter on patients on antidepressants data post COVID
 addataethimdpostcov <- addataethimd %>%
-        filter(ADpostcovid == 1)
+        filter(ADpostcovid == "1")
 
 #---------------------------------------------------------------------------------------------
 
@@ -71,7 +75,11 @@ addataprecovidsummaryeth <- addataethimdprecov %>%
         count(ethnicity, sort = FALSE, name = "precovpatnum")    
 
 addatapostcovidsummaryeth <- addataethimdpostcov %>%
-        count(ethnicity, sort = FALSE, name = "postcovpatnum")    
+        count(ethnicity, sort = FALSE, name = "postcovpatnum")   
+
+addatatotalsummaryeth <- addataethimd %>%
+        count(ethnicity, sort = FALSE, name = "totalethpatnum")
+
 
 #Has AD prescribing by sex and ethnic group changed pre and post covid?
 addataprecovidsummaryethsex <- addataethimdprecov %>%
@@ -111,22 +119,29 @@ addatapostcovidsummaryIMD <- addataethimdpostcov %>%
 names(addataprecovidsummary)
 names(addatapostcovidsummary)
 
-
 addatatoplot <- addataprecovidsummaryeth %>%
-        left_join(., addatapostcovidsummaryeth, by = "ethnicity") 
+        left_join(., addatapostcovidsummaryeth, by = "ethnicity") %>%
+        left_join(., addatatotalsummaryeth, by = "ethnicity")
 
+# Bar Plots
 
-# Grouped Bar Plot
-#counts <- table(addataethimdprecov$ethnicity, addataethimdpostcov$ethnicity)
-#barplot(counts, main="Impact of COVID-19 on ethnicity and antidepressant prescribing",
-#        xlab="Ethnicity", col=c("darkblue","red"),
-#        legend = rownames(counts), beside=TRUE)
+addatatoplot %>% 
+ggplot (aes(x=ethnicity, y=precovpatnum)) + 
+        geom_bar(stat = "identity", fill = "#581845") + 
+        coord_flip()+
+        theme_bw()+
+        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: pre-covid prescribing") +
+        labs(y="Patient numbers", x = "Ethnicity") 
+#        scale_fill_brewer(palette = "Pastel1")
 
-ggplot(addataprecovidsummaryeth, aes(x=ethnicity, y=precovpatnum)) + 
-        geom_bar(stat = "identity") + 
-        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing") +
-        labs(y="Patient numbers", x = "Ethnicity") +
-#       scale_fill_brewer(palette = "Pastel1")
+addatatoplot %>% 
+        ggplot (aes(x=ethnicity, y=postcovpatnum)) + 
+        geom_bar(stat = "identity", fill = "#69B6B3") + 
+        coord_flip()+
+        theme_bw()+
+        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: post-covid prescribing") +
+        labs(y="Patient numbers", x = "Ethnicity") 
+#        scale_fill_brewer(palette = "Pastel1")
 
 write.csv (addatatoplot,file=here::here("output","tables","tables.csv"))
         
