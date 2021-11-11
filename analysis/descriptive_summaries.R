@@ -18,23 +18,21 @@ addata<- read.csv (here::here ("output/data", "input.csv"))
 
 #---------------------------------------------------------------------------------------------
 
-#---------------------------------------------------------------------------------------------
-
 ## Exploring data
 
 # Looking at variables
-names(addata)
+#names(addata)
 
-# Other details regarding Number of rows variables and variable type
-str(addata)
+# Other details regarding number of rows variables and variable type
+#str(addata)
 
 # Looking at variable distinct values
-unique(addata$ethnicity)
-unique(addata$imd)
+#unique(addata$ethnicity)
+#unique(addata$imd)
 
 #---------------------------------------------------------------------------------------------
 
-class(addataethimd$ethnicity)
+#class(addataethimd$ethnicity)
 
 # Reshaping data so IMD and ethnicity are renamed as categories than numbers
 addataethimd <- addata
@@ -52,8 +50,8 @@ addataethimd <- addata
  
 
 # Looking at the new distinct values of ethnicity upon reshaping
-unique(addataethimd$imd)
-unique(addataethimd$ethnicity)        
+#unique(addataethimd$imd)
+#unique(addataethimd$ethnicity)        
 
 # Filter on patients on antidepressants data pre COVID
 addataethimdprecov <- addataethimd %>%
@@ -116,8 +114,8 @@ addatapostcovidsummaryIMD <- addataethimdpostcov %>%
 # Need to join the pre and post covid summary datasets to have both graph input data in single table
 # Join on ethnicity
 
-names(addataprecovidsummary)
-names(addatapostcovidsummary)
+#names(addataprecovidsummary)
+#names(addatapostcovidsummary)
 
 addatatoplot <- addataprecovidsummaryeth %>%
         left_join(., addatapostcovidsummaryeth, by = "ethnicity") %>%
