@@ -8,6 +8,25 @@
 
 #---------------------------------------------------------------------------------------------
 
+# Installing packages
+install.packages("dplyr") 
+install.packages("reshape")
+install.packages("tidyverse") 
+install.packages("readxl")
+install.packages("here")
+install.packages("gt")
+install.packages("gtsummary")
+
+# Loading packages
+library(dplyr)
+library(reshape)
+library(tidyverse)
+library(readxl)
+library('here')
+library('gt')
+library('gtsummary')
+
+
 ## Create output directory
 dir.create(here::here("output", "tables"), showWarnings = FALSE, recursive=TRUE)
 #setwd("//ims.gov.uk/data/Users/GBBULVD/BULHOME23/NRajendran/Data/Desktop/DESKTOP FILES/R")
