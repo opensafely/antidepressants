@@ -36,27 +36,27 @@ addata <- read.csv(
  col_types = cols(patient_id = col_integer(),age = col_double())
 )
 
-#plot_eth <- ggplot(data=addata, aes(addata$ethnicity)) + geom_histogram()
+plot_eth <- ggplot(data=addata, aes(addata$ethnicity)) + geom_histogram()
 
-#ggsave(
-#  plot= plot_eth,
-#  filename="descriptive.png", path=here::here("output"),
-#)
+ggsave(
+  plot= plot_eth,
+  filename="descriptive.png", path=here::here("output"),
+)
 
-addatatoplot %>% 
-ggplot (aes(x=ethnicity, y=precovpatnum)) + 
-        geom_bar(stat = "identity", fill = "#581845") + 
-        coord_flip()+
-        theme_bw()+
-        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: pre-covid prescribing") +
-        labs(y="Patient numbers", x = "Ethnicity") 
-        scale_fill_brewer(palette = "Pastel1")
+#addatatoplot %>% 
+#ggplot (aes(x=ethnicity, y=precovpatnum)) + 
+#        geom_bar(stat = "identity", fill = "#581845") + 
+#        coord_flip()+
+#        theme_bw()+
+#        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: pre-covid prescribing") +
+#        labs(y="Patient numbers", x = "Ethnicity") 
+#        scale_fill_brewer(palette = "Pastel1")
 
-addatatoplot %>% 
-        ggplot (aes(x=ethnicity, y=postcovpatnum)) + 
-        geom_bar(stat = "identity", fill = "#69B6B3") + 
-        coord_flip()+
-        theme_bw()+
-        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: post-covid prescribing") +
-        labs(y="Patient numbers", x = "Ethnicity") 
-        scale_fill_brewer(palette = "Pastel1")
+#addatatoplot %>% 
+#        ggplot (aes(x=ethnicity, y=postcovpatnum)) + 
+#        geom_bar(stat = "identity", fill = "#69B6B3") + 
+#       coord_flip()+
+#        theme_bw()+
+#        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: post-covid prescribing") +
+#        labs(y="Patient numbers", x = "Ethnicity") 
+#        scale_fill_brewer(palette = "Pastel1")
