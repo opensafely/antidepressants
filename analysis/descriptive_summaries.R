@@ -95,7 +95,7 @@ addatapostcovidsummaryeth <- addataethimdpostcov %>%
         count(ethnicity, sort = FALSE, name = "postcovpatnum")   
 
 addatatotalsummaryeth <- addataethimd %>%
-        count(ethnicity, sort = FALSE, name = "totalethpatnum")
+        count(ethnicity, sort = FALSE, name = "totalpatnum")
 
 
 #Has AD prescribing by sex and ethnic group changed pre and post covid?
@@ -103,21 +103,27 @@ addataprecovidsummaryethsex <- addataethimdprecov %>%
         count(ethnicity, sex, sort = FALSE, name = "precovpatnum")    
 
 addatapostcovidsummaryethsex <- addataethimdpostcov %>%
-        count(ethnicity, sex, sort = FALSE, name = "postcovpatnum")    
+        count(ethnicity, sex, sort = FALSE, name = "postcovpatnum")
+
+addatatotalsummaryethsex <- addataethimd %>%
+        count(ethnicity, sex, sort = FALSE, name = "totalpatnum")  
 
 #Has AD prescribing by sex changed pre and post covid?
 addataprecovidsummarysex <- addataethimdprecov %>%
         count(sex, sort = FALSE, name = "precovpatnum")    
 
 addatapostcovidsummarysex <- addataethimdpostcov %>%
-        count(sex, sort = FALSE, name = "postcovpatnum")    
+        count(sex, sort = FALSE, name = "postcovpatnum")   
+
+addatatotalsummarysex <- addataethimd %>%
+        count(sex, sort = FALSE, name = "totalpatnum")   
 
 #Has AD prescribing by age changed pre and post covid?
 addataprecovidsummaryage <- addataethimdprecov %>%
-        count(ageprecovid, sort = FALSE, name = "precovpatnum")    
+        count(age, sort = FALSE, name = "precovpatnum")    
 
 addatapostcovidsummaryage <- addataethimdpostcov %>%
-        count(agepostcovid, sort = FALSE, name = "postcovpatnum")  
+        count(age, sort = FALSE, name = "postcovpatnum") 
 
 #Has AD prescribing by IMD changed pre and post covid?
 addataprecovidsummaryIMD <- addataethimdprecov %>%
@@ -125,6 +131,19 @@ addataprecovidsummaryIMD <- addataethimdprecov %>%
 
 addatapostcovidsummaryIMD <- addataethimdpostcov %>%
         count(imd, sort = FALSE, name = "postcovpatnum")   
+
+addatatotalsummaryIMD <- addataethimd %>%
+        count(imd, sort = FALSE, name = "totalpatnum")  
+
+#Has AD prescribing by region changed pre and post covid?
+addataprecovidsummaryreg <- addataethimdprecov %>%
+        count(region, sort = FALSE, name = "precovpatnum")    
+
+addatapostcovidsummaryreg <- addataethimdpostcov %>%
+        count(region, sort = FALSE, name = "postcovpatnum")   
+
+addatatotalsummaryreg <- addataethimd %>%
+        count(region, sort = FALSE, name = "totalpatnum")  
 
 #---------------------------------------------------------------------------------------------
 
@@ -136,9 +155,27 @@ addatapostcovidsummaryIMD <- addataethimdpostcov %>%
 #names(addataprecovidsummary)
 #names(addatapostcovidsummary)
 
-addatatoplot <- addataprecovidsummaryeth %>%
+adethdatatoplot <- addataprecovidsummaryeth %>%
         left_join(., addatapostcovidsummaryeth, by = "ethnicity") %>%
         left_join(., addatatotalsummaryeth, by = "ethnicity")
+
+adsexdatatoplot <- addataprecovidsummarysex %>% 
+        left_join(., addatapostcovidsummarysex, by = "sex") %>% 
+        left_join(., addatatotalsummarysex, by = "sex")
+
+adprecovidagedatatoplot <- addataprecovidsummaryage
+        
+adpostcovidagedatatoplot <- addatapostcovidsummaryage
+
+adimddatatoplot <- addataprecovidsummaryIMD %>%
+        left_join(., addatapostcovidsummaryIMD, by = "imd") %>%
+        left_join(., addatatotalsummaryIMD, by = "imd")
+
+adregdatatoplot <- addataprecovidsummaryreg %>%
+        left_join(., addatapostcovidsummaryreg, by = "region") %>%
+        left_join(., addatatotalsummaryreg, by = "region")
+
+
 
 # Bar Plots
 
@@ -160,10 +197,12 @@ addatatoplot %>%
         labs(y="Patient numbers", x = "Ethnicity") 
 #        scale_fill_brewer(palette = "Pastel1")
 
-write.csv (addatatoplot,file=here::here("output","tables","tables.csv"))
-        
-
-
+write.csv (adethdatatoplot,file=here::here("output","tables","tables.csv"))
+write.csv (adsexdatatoplot,file=here::here("output","tables","tables.csv"))
+write.csv (adprecovidagedatatoplot,file=here::here("output","tables","tables.csv"))
+write.csv (adpostcovidagedatatoplot,file=here::here("output","tables","tables.csv"))      
+write.csv (adimddatatoplot,file=here::here("output","tables","tables.csv"))
+write.csv (adregdatatoplot,file=here::here("output","tables","tables.csv"))
 
 
 
