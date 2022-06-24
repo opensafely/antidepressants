@@ -155,7 +155,7 @@ addatatotalsummaryreg <- addataethimd %>%
 #names(addataprecovidsummary)
 #names(addatapostcovidsummary)
 
-adethdatatoplot <- addataprecovidsummaryeth %>%
+addatatoplot <- addataprecovidsummaryeth %>%
         left_join(., addatapostcovidsummaryeth, by = "ethnicity") %>%
         left_join(., addatatotalsummaryeth, by = "ethnicity")
 
@@ -177,32 +177,7 @@ adregdatatoplot <- addataprecovidsummaryreg %>%
 
 
 
-# Bar Plots
-
-addatatoplot %>% 
-ggplot (aes(x=ethnicity, y=precovpatnum)) + 
-        geom_bar(stat = "identity", fill = "#581845") + 
-        coord_flip()+
-        theme_bw()+
-        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: pre-covid prescribing") +
-        labs(y="Patient numbers", x = "Ethnicity") 
-#        scale_fill_brewer(palette = "Pastel1")
-
-addatatoplot %>% 
-        ggplot (aes(x=ethnicity, y=postcovpatnum)) + 
-        geom_bar(stat = "identity", fill = "#69B6B3") + 
-        coord_flip()+
-        theme_bw()+
-        ggtitle("Impact of COVID-19 on ethnicity and antidepressant prescribing: post-covid prescribing") +
-        labs(y="Patient numbers", x = "Ethnicity") 
-#        scale_fill_brewer(palette = "Pastel1")
-
-write.csv (adethdatatoplot,file=here::here("output","tables","table.csv"))
-#write.csv (adsexdatatoplot,file=here::here("output","tables","table2.csv"))
-#write.csv (adprecovidagedatatoplot,file=here::here("output","tables","table3.csv"))
-#write.csv (adpostcovidagedatatoplot,file=here::here("output","tables","table4.csv"))      
-#write.csv (adimddatatoplot,file=here::here("output","tables","table5.csv"))
-#write.csv (adregdatatoplot,file=here::here("output","tables","table6.csv"))
+write.csv (addatatoplot,file=here::here("output","tables","table.csv"))
 
 
 
