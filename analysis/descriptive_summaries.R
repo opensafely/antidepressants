@@ -197,12 +197,12 @@ addatatoplot %>%
         labs(y="Patient numbers", x = "Ethnicity") 
 #        scale_fill_brewer(palette = "Pastel1")
 
-write.csv (adethdatatoplot,file=here::here("output","tables","tables.csv"))
-write.csv (adsexdatatoplot,file=here::here("output","tables","tables.csv"))
-write.csv (adprecovidagedatatoplot,file=here::here("output","tables","tables.csv"))
-write.csv (adpostcovidagedatatoplot,file=here::here("output","tables","tables.csv"))      
-write.csv (adimddatatoplot,file=here::here("output","tables","tables.csv"))
-write.csv (adregdatatoplot,file=here::here("output","tables","tables.csv"))
+write.csv (adethdatatoplot,file=here::here("output","tables","table.csv"))
+#write.csv (adsexdatatoplot,file=here::here("output","tables","table2.csv"))
+#write.csv (adprecovidagedatatoplot,file=here::here("output","tables","table3.csv"))
+#write.csv (adpostcovidagedatatoplot,file=here::here("output","tables","table4.csv"))      
+#write.csv (adimddatatoplot,file=here::here("output","tables","table5.csv"))
+#write.csv (adregdatatoplot,file=here::here("output","tables","table6.csv"))
 
 
 
