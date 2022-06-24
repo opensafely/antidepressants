@@ -16,4 +16,5 @@ actions:
     needs: [generate_study_population]
     outputs:
       moderately_sensitive:
-        data: output/tables/tables.csv
+        data: output/tables/table.csv
+        cohort: output/descriptive.png
